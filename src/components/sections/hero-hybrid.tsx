@@ -125,28 +125,32 @@ export function HeroHybrid({ onOpenVehicleDetail, onVehicleChange }: HeroHybridP
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none z-0 intro-hide transition-opacity duration-700">
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-50 via-white to-neutral-100 dark:from-neutral-900/30 dark:via-black dark:to-black opacity-90" />
-        {/* Avantgarde-style Brand Emblem Watermark in Background */}
+        {/* Avantgarde-style Brand Emblem Watermark aligned with left typography */}
         {currentVehicle.watermarkLogo && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentVehicle.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-[340px] h-[340px] sm:w-[500px] sm:h-[500px] lg:w-[650px] lg:h-[650px] opacity-[0.16] dark:opacity-[0.09] dark:brightness-0 dark:invert transition-all"
-              >
-                <Image
-                  src={currentVehicle.watermarkLogo}
-                  alt={`${currentVehicle.brand} Emblem`}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 340px, (max-width: 1200px) 500px, 650px"
-                  className="object-contain"
-                />
-              </motion.div>
-            </AnimatePresence>
+          <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 h-full w-full flex items-center">
+              <div className="w-full lg:w-5/12 flex items-center justify-start">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentVehicle.id}
+                    initial={{ opacity: 0, scale: 0.92, x: -20 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 1.04, x: -10 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative w-[320px] h-[320px] sm:w-[440px] sm:h-[440px] lg:w-[540px] lg:h-[540px] -left-6 sm:-left-10 lg:-left-14 opacity-[0.15] dark:opacity-[0.08] dark:brightness-0 dark:invert transition-all"
+                  >
+                    <Image
+                      src={currentVehicle.watermarkLogo}
+                      alt={`${currentVehicle.brand} Emblem`}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 320px, (max-width: 1200px) 440px, 540px"
+                      className="object-contain object-left"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         )}
       </div>

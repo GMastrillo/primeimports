@@ -29,7 +29,7 @@ export const SHOWCASE_VEHICLES: Vehicle[] = [
     price: "R$ 2.789.900,00",
     category: "Superesportivos",
     image: "https://d20d1u0tfijfbg.cloudfront.net/primeimports/79086/foto-Album-de-FERRARI-458-ITALIA-A-6ab14f407b68d.webp",
-    watermarkLogo: "/watermarks/ferrari-watermark.png",
+    watermarkLogo: "/watermarks/ferrari-clean.png",
     power: "570 CV",
     acceleration: "3.4s",
     topSpeed: "325 km/h",
@@ -51,7 +51,7 @@ export const SHOWCASE_VEHICLES: Vehicle[] = [
     price: "R$ 2.549.900,00",
     category: "Superesportivos",
     image: "https://d20d1u0tfijfbg.cloudfront.net/primeimports/64287/foto-Album-de-PORSCHE-911-A-696fbe0431188.webp",
-    watermarkLogo: "/watermarks/porsche-watermark.png",
+    watermarkLogo: "/watermarks/porsche-clean.png",
     power: "510 CV",
     acceleration: "3.4s",
     topSpeed: "318 km/h",
@@ -73,7 +73,7 @@ export const SHOWCASE_VEHICLES: Vehicle[] = [
     price: "R$ 2.279.000,00",
     category: "Superesportivos",
     image: "https://d20d1u0tfijfbg.cloudfront.net/primeimports/78700/foto-Album-de-MCLAREN-ARTURA-A-6aa957ba5de62.webp",
-    watermarkLogo: "/watermarks/mclaren-watermark.png",
+    watermarkLogo: "/watermarks/mclaren-clean.png",
     power: "680 CV",
     acceleration: "3.0s",
     topSpeed: "330 km/h",
@@ -84,7 +84,7 @@ export const SHOWCASE_VEHICLES: Vehicle[] = [
       { label: "Câmbio", value: "8-Speed SSG E-Reverse" },
       { label: "Portas", value: "Diédricas Borboleta" }
     ]
-  }
+  },
 ];
 
 export const INVENTORY_VEHICLES: Vehicle[] = [
