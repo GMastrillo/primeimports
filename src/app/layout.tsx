@@ -44,9 +44,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (sessionStorage.getItem('prime_intro_shown') !== 'true') {
+                var isHome = window.location.pathname === '/' || window.location.pathname === '';
+                if (isHome && sessionStorage.getItem('prime_intro_shown') !== 'true') {
                   document.documentElement.classList.add('intro-pending');
                 } else {
+                  document.documentElement.classList.remove('intro-pending');
                   document.documentElement.classList.add('intro-done');
                 }
               } catch (e) {}

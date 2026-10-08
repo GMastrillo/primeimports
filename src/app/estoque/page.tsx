@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { FilterBar } from "@/components/sections/filter-bar";
@@ -13,6 +13,13 @@ import { ShieldCheck, Compass, ArrowRight } from "lucide-react";
 
 export default function EstoquePage() {
   const [selectedVehicleForModal, setSelectedVehicleForModal] = useState<Vehicle | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.remove("intro-pending");
+      document.documentElement.classList.add("intro-done");
+    }
+  }, []);
 
   // Filter States
   const [selectedCategory, setSelectedCategory] = useState<string>("TODOS");

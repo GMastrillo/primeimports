@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Vehicle } from "@/data/inventory";
@@ -12,6 +13,8 @@ interface ShowroomGridProps {
 }
 
 export function ShowroomGrid({ vehicles, onOpenVehicleDetail }: ShowroomGridProps) {
+  const pathname = usePathname();
+
   if (vehicles.length === 0) {
     return (
       <section id="estoque" className="max-w-7xl mx-auto px-6 sm:px-8 py-20 text-center relative">
@@ -41,7 +44,7 @@ export function ShowroomGrid({ vehicles, onOpenVehicleDetail }: ShowroomGridProp
             Acervo Selecionado
           </span>
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-neutral-950 dark:text-white uppercase tracking-tight">
-            Estoque Prime Imports
+            {pathname === "/estoque" ? "Veículos Disponíveis" : "Estoque Prime Imports"}
           </h2>
         </div>
 
@@ -49,13 +52,15 @@ export function ShowroomGrid({ vehicles, onOpenVehicleDetail }: ShowroomGridProp
           <p className="max-w-md text-xs sm:text-sm font-mono tracking-wider text-neutral-600 dark:text-neutral-400">
             Veículos periciados com laudo cautelar 100% aprovado, procedência rastreada e entrega privativa em todo o território nacional.
           </p>
-          <Link
-            href="/estoque"
-            className="inline-flex items-center gap-2 px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white text-[11px] font-mono uppercase tracking-[0.2em] text-black dark:text-white transition-colors whitespace-nowrap"
-          >
-            <span>Aba Estoque</span>
-            <ArrowUpRight size={13} />
-          </Link>
+          {pathname !== "/estoque" && (
+            <Link
+              href="/estoque"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white text-[11px] font-mono uppercase tracking-[0.2em] text-black dark:text-white transition-colors whitespace-nowrap"
+            >
+              <span>Aba Estoque</span>
+              <ArrowUpRight size={13} />
+            </Link>
+          )}
         </div>
       </div>
 
