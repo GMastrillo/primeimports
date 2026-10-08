@@ -32,9 +32,9 @@ export function PersonalSourcing() {
           {/* Subtle background glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-neutral-200/50 dark:bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Left Column: Heading and Context */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-6">
               <div className="flex items-center gap-2 mb-3">
                 <Compass size={18} strokeWidth={1.5} className="text-neutral-900 dark:text-white" />
                 <span className="text-[11px] font-mono tracking-[0.35em] uppercase text-neutral-500 dark:text-neutral-400">
@@ -42,8 +42,9 @@ export function PersonalSourcing() {
                 </span>
               </div>
 
-              <h2 className="font-display text-3xl sm:text-5xl font-black text-neutral-950 dark:text-white uppercase tracking-tight leading-tight mb-4">
-                Não encontrou o veículo ideal?
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] xl:text-4xl font-extrabold text-neutral-950 dark:text-white uppercase tracking-tight leading-[1.15] mb-5">
+                Não encontrou <br className="hidden sm:inline" />
+                o veículo ideal?
               </h2>
 
               <p className="text-xs sm:text-sm font-mono tracking-wider text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
@@ -67,7 +68,7 @@ export function PersonalSourcing() {
             </div>
 
             {/* Right Column: Sourcing Form */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

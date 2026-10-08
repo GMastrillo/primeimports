@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/providers/theme-provider";
@@ -13,6 +15,7 @@ export function Navbar({ visible = true }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,40 +40,47 @@ export function Navbar({ visible = true }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
         {/* Official Brand Logo */}
-        <a href="#" className="flex items-center group">
+        <Link href="/" className="flex items-center group">
           <img
             src="/logo-primeimports.svg"
             alt="Prime Imports"
             className="h-9 sm:h-12 w-auto object-contain transition-all duration-300 dark:brightness-0 dark:invert"
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="#showroom"
-            className="text-xs uppercase tracking-[0.25em] text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors font-medium py-1"
+          <Link
+            href="/estoque"
+            className={`text-xs uppercase tracking-[0.25em] transition-all font-medium py-1 relative ${
+              pathname === "/estoque"
+                ? "text-black dark:text-white font-bold"
+                : "text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white"
+            }`}
           >
-            Showroom
-          </a>
-          <a
-            href="#experience"
+            <span>Estoque</span>
+            {pathname === "/estoque" && (
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black dark:bg-white" />
+            )}
+          </Link>
+          <Link
+            href="/#experience"
             className="text-xs uppercase tracking-[0.25em] text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors font-medium py-1"
           >
             Experience
-          </a>
-          <a
-            href="#sourcing"
+          </Link>
+          <Link
+            href="/#sourcing"
             className="text-xs uppercase tracking-[0.25em] text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors font-medium py-1"
           >
             Personal Sourcing
-          </a>
-          <a
-            href="#location"
+          </Link>
+          <Link
+            href="/#location"
             className="text-xs uppercase tracking-[0.25em] text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors font-medium py-1"
           >
             Showroom Físico
-          </a>
+          </Link>
         </nav>
 
         {/* Action Controls */}
@@ -128,34 +138,38 @@ export function Navbar({ visible = true }: NavbarProps) {
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-2xl border-b border-black/10 dark:border-white/10 px-6 py-8 flex flex-col gap-6"
         >
-          <a
-            href="#showroom"
+          <Link
+            href="/estoque"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm uppercase tracking-[0.25em] text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white"
+            className={`text-sm uppercase tracking-[0.25em] ${
+              pathname === "/estoque"
+                ? "text-black dark:text-white font-bold"
+                : "text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white"
+            }`}
           >
-            Showroom
-          </a>
-          <a
-            href="#experience"
+            Estoque
+          </Link>
+          <Link
+            href="/#experience"
             onClick={() => setMobileMenuOpen(false)}
             className="text-sm uppercase tracking-[0.25em] text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white"
           >
             Experience
-          </a>
-          <a
-            href="#sourcing"
+          </Link>
+          <Link
+            href="/#sourcing"
             onClick={() => setMobileMenuOpen(false)}
             className="text-sm uppercase tracking-[0.25em] text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white"
           >
             Personal Sourcing
-          </a>
-          <a
-            href="#location"
+          </Link>
+          <Link
+            href="/#location"
             onClick={() => setMobileMenuOpen(false)}
             className="text-sm uppercase tracking-[0.25em] text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white"
           >
             Showroom Físico
-          </a>
+          </Link>
           <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
             <a
               href="https://wa.me/551123643828?text=Ol%C3%A1%2C%20gostaria%20de%20um%20atendimento%20exclusivo%20pelo%20Concierge%20Prime%20Imports."

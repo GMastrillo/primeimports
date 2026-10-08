@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Vehicle } from "@/data/inventory";
@@ -13,24 +14,26 @@ interface ShowroomGridProps {
 export function ShowroomGrid({ vehicles, onOpenVehicleDetail }: ShowroomGridProps) {
   if (vehicles.length === 0) {
     return (
-      <section id="showroom" className="max-w-7xl mx-auto px-6 sm:px-8 py-20 text-center">
+      <section id="estoque" className="max-w-7xl mx-auto px-6 sm:px-8 py-20 text-center relative">
+        <div id="showroom" className="absolute -top-24 left-0 pointer-events-none" />
         <div className="py-16 px-6 border border-black/10 dark:border-white/10 bg-neutral-100/60 dark:bg-neutral-950/60 max-w-xl mx-auto">
           <p className="text-sm font-mono tracking-[0.25em] uppercase text-neutral-600 dark:text-neutral-400 mb-4">
             Nenhum veículo encontrado com os filtros selecionados
           </p>
-          <a
-            href="#sourcing"
+          <Link
+            href="/#sourcing"
             className="inline-block px-6 py-3 bg-black text-white dark:bg-white dark:text-black text-xs font-mono tracking-[0.2em] uppercase"
           >
             Solicitar Encomenda no Sourcing
-          </a>
+          </Link>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="showroom" className="max-w-7xl mx-auto px-6 sm:px-8 py-24 transition-colors">
+    <section id="estoque" className="max-w-7xl mx-auto px-6 sm:px-8 py-24 transition-colors relative">
+      <div id="showroom" className="absolute -top-24 left-0 pointer-events-none" />
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-black/10 dark:border-white/10 pb-6">
         <div>
@@ -38,13 +41,22 @@ export function ShowroomGrid({ vehicles, onOpenVehicleDetail }: ShowroomGridProp
             Acervo Selecionado
           </span>
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-neutral-950 dark:text-white uppercase tracking-tight">
-            Showroom Prime Imports
+            Estoque Prime Imports
           </h2>
         </div>
 
-        <p className="max-w-md text-xs sm:text-sm font-mono tracking-wider text-neutral-600 dark:text-neutral-400">
-          Veículos periciados com laudo cautelar 100% aprovado, procedência rastreada e entrega privativa em todo o território nacional.
-        </p>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <p className="max-w-md text-xs sm:text-sm font-mono tracking-wider text-neutral-600 dark:text-neutral-400">
+            Veículos periciados com laudo cautelar 100% aprovado, procedência rastreada e entrega privativa em todo o território nacional.
+          </p>
+          <Link
+            href="/estoque"
+            className="inline-flex items-center gap-2 px-4 py-2 border border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white text-[11px] font-mono uppercase tracking-[0.2em] text-black dark:text-white transition-colors whitespace-nowrap"
+          >
+            <span>Aba Estoque</span>
+            <ArrowUpRight size={13} />
+          </Link>
+        </div>
       </div>
 
       {/* Grid of Vehicles */}
